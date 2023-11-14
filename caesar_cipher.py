@@ -1,8 +1,8 @@
-# Bachelor of Applied IT (SLTC) - Information Security 
-#* Implement the mechanism of encryption and decryption 
-#* in Caesar Cipher using the Python programming language
+# Bachelor of Applied IT (SLTC), CIT114 - Information Security 
+# Implement the mechanism of encryption and decryption 
+# in Caesar Cipher using the Python programming language
 
-def encrypt(plain_text, shift):
+def caesar_encrypt(plain_text, shift):
     """
     Encrypts the given plain text using the Caesar Cipher with the given shift.
 
@@ -18,8 +18,7 @@ def encrypt(plain_text, shift):
         
             '''
             Wrap around to the beginning of the alphabet
-            if the shifted character is
-            outside of the alphabet 
+            if the shifted character is outside of the alphabet 
             '''
             if shifted_char > ord('z'):
                 shifted_char -= 26
@@ -34,7 +33,7 @@ def encrypt(plain_text, shift):
     return encrypted_text
 
 
-def decrypt(encrypted_text, shift):
+def caesar_decrypt(encrypted_text, shift):
     """
     Decrypts the given encrypted text using the Caesar Cipher with the given shift
 
@@ -50,8 +49,7 @@ def decrypt(encrypted_text, shift):
 
             '''
             Wrap around to the end of the alphabet 
-            if the shifted character is
-            before the beginning of the alphabet.
+            if the shifted character is before the beginning of the alphabet.
             '''
             if shifted_char < ord('a'):
                 shifted_char += 26
@@ -65,16 +63,19 @@ def decrypt(encrypted_text, shift):
     return decrypted_text
 
 def main():
-    # plain_text = 'This is a secret message.'
-    plain_text = input("Enter your secret message: ")
+
     shift = 3
+    # shift = 4
+    # shift = 5
 
-    encrypted_text = encrypt(plain_text, shift)
-    decrypted_text = decrypt(encrypted_text, shift)
+    plain_text = input("Enter your secret message: ")
+    
+    encrypted_text = caesar_encrypt(plain_text, shift)
+    decrypted_text = caesar_decrypt(encrypted_text, shift)
 
-    print(f'Plain text: {plain_text}')
-    print(f'Encrypted text: {encrypted_text}')
-    print(f'Decrypted text: {decrypted_text}')
+    print(f'Plain text: {plain_text.upper()}')
+    print(f'Encrypted text: {encrypted_text.upper()}')
+    print(f'Decrypted text: {decrypted_text.upper()}')
 
 
 if __name__ == "__main__":
